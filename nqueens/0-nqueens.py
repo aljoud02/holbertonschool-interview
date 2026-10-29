@@ -1,13 +1,14 @@
 #!/usr/bin/python3
 """
-Module that solves the N-queens puzzle using backtracking algorithm.
+N Queens puzzle solver module using backtracking.
 """
 import sys
 
 
 def print_usage_and_exit(message, status=1):
     """
-    Prints the error message to standard output and terminates the program with a given status code.
+    Prints an error message to stdout and exits
+    with a given status.
     """
     print(message)
     sys.exit(status)
@@ -15,7 +16,7 @@ def print_usage_and_exit(message, status=1):
 
 def init_arguments():
     """
-    Validates command-line arguments and returns the integer value of N.
+    Validates the command line arguments and returns N.
     """
     if len(sys.argv) != 2:
         print_usage_and_exit("Usage: nqueens N")
@@ -33,7 +34,8 @@ def init_arguments():
 
 def is_safe(row, col, board):
     """
-    Evaluates whether a queen can be securely positioned at the specified board[row] = col coordinate.
+    Checks if a queen can be safely placed at
+    board[row] = col.
     """
     for i in range(row):
         if board[i] == col or abs(board[i] - col) == abs(i - row):
@@ -43,7 +45,8 @@ def is_safe(row, col, board):
 
 def solve_nqueens(row, n, board):
     """
-    Executes a recursive backtracking search to find and display all valid positions for the N-queens.
+    Recursively solves the N Queens puzzle using
+    backtracking.
     """
     if row == n:
         solution = [[i, board[i]] for i in range(n)]
